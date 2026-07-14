@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ Grade 12 General Math - Lesson 1-6: Operations and Composition of Functions (12Jen-math-T1-1.6-exam)</title>
+    <title>🧮 امتحان العمليات على الدوال وتركيب الدوال</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=400;600;700;900&family=Inter:wght=400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; }
         body.en-mode { font-family: 'Inter', sans-serif; }
@@ -25,7 +25,7 @@
             position: fixed; top: 16px; left: 16px; z-index: 100;
             background: white; padding: 6px; border-radius: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; gap: 4px;
-            border: 2px solid #0d9488;
+            border: 2px solid #e11d48;
         }
         [dir="ltr"] .lang-switch { left: auto; right: 16px; }
         .lang-btn {
@@ -33,8 +33,8 @@
             transition: all 0.3s; border: none; font-size: 0.875rem;
             background: transparent; color: #6b7280;
         }
-        .lang-btn.active { background: #0d9488; color: white; box-shadow: 0 2px 6px rgba(13,148,136,0.4); }
-        .lang-btn:hover:not(.active) { background: #f0fdfa; color: #0d9488; }
+        .lang-btn.active { background: #e11d48; color: white; box-shadow: 0 2px 6px rgba(225,29,72,0.4); }
+        .lang-btn:hover:not(.active) { background: #fff1f2; color: #e11d48; }
         .shuffle-badge {
             display: inline-block;
             background: linear-gradient(135deg, #f59e0b, #ef4444);
@@ -47,7 +47,7 @@
             animation: pulse 2s infinite;
         }
     </style>
-<script src="/_aistudio-iframe.js"></script></head>
+</head>
 <body class="bg-gray-50 text-gray-800 p-4 md:p-8 min-h-screen">
 
     <div class="lang-switch no-print">
@@ -56,24 +56,24 @@
     </div>
 
     <div id="timer-container" class="max-w-4xl mx-auto mb-4 text-center no-print">
-        <div class="bg-white p-4 rounded-xl shadow-md inline-block border-2 border-teal-100">
+        <div class="bg-white p-4 rounded-xl shadow-md inline-block border-2 border-rose-100">
             <span class="text-gray-600 ml-2" data-ar="⏱️ الوقت المتبقي:" data-en="⏱️ Time Remaining:">⏱️ الوقت المتبقي:</span>
-            <span id="timer" class="text-2xl font-bold text-teal-600 font-mono">60:00</span>
+            <span id="timer" class="text-2xl font-bold text-rose-600 font-mono">60:00</span>
             <span class="shuffle-badge" data-ar="🔀 أسئلة عشوائية" data-en="🔀 Random Questions">🔀 أسئلة عشوائية</span>
         </div>
     </div>
 
     <div class="max-w-4xl mx-auto mb-6 flex flex-wrap gap-3 justify-center no-print">
-        <button onclick="toggleAnswers()" class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="👁️ إظهار / إخفاء الإجابات" data-en="👁️ Show / Hide Answers">👁️ إظهار / إخفاء الإجابات</button>
+        <button onclick="toggleAnswers()" class="bg-rose-600 hover:bg-rose-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="👁️ إظهار / إخفاء الإجابات" data-en="👁️ Show / Hide Answers">👁️ إظهار / إخفاء الإجابات</button>
         <button onclick="window.print()" class="bg-gray-800 hover:bg-gray-900 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="🖨️ طباعة / PDF" data-en="🖨️ Print / PDF">🖨️ طباعة / PDF</button>
-        <button onclick="reshuffleExam()" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="🔀 إعادة خلط الأسئلة" data-en="🔀 Reshuffle Questions">🔀 إعادة خلط الأسئلة</button>
+        <button onclick="reshuffleExam()" class="bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="🔀 إعادة خلط الأسئلة" data-en="🔀 Reshuffle Questions">🔀 إعادة خلط الأسئلة</button>
     </div>
 
-    <header class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md mb-8 border-r-4 border-teal-600">
+    <header class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md mb-8 border-r-4 border-rose-600">
         <div class="text-center">
-            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2" data-ar="⚡ رياضيات الصف الثاني عشر عام" data-en="⚡ Grade 12 General Mathematics">⚡ رياضيات الصف الثاني عشر عام</h1>
-            <h2 class="text-lg text-teal-600 font-semibold" data-ar="الدرس 1-6: العمليات على الدوال وتركيب الدوال (الفصل الدراسي الأول)" data-en="Lesson 1-6: Operations and Composition of Functions (Term 1)">الدرس 1-6: العمليات على الدوال وتركيب الدوال (الفصل الدراسي الأول)</h2>
-            <p class="text-sm text-gray-600 mt-2" data-ar="اختبار شامل يغطي الجمع والطرح والضرب والقسمة للدوال، مجال الدوال المشتركة، وتركيب الدوال ومجالها." data-en="Lesson 1-6: Operations and Composition of Functions complete interactive test aligned with Ministry syllabus.">اختبار شامل يغطي الجمع والطرح والضرب والقسمة للدوال، مجال الدوال المشتركة، وتركيب الدوال ومجالها.</p>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2" data-ar="🧮 امتحان العمليات على الدوال وتركيب الدوال" data-en="🧮 Operations on Functions and Function Composition Exam">🧮 امتحان العمليات على الدوال وتركيب الدوال</h1>
+            <h2 class="text-lg text-rose-600 font-semibold" data-ar="Operations on Functions and Function Composition" data-en="Operations on Functions and Function Composition">Operations on Functions and Function Composition</h2>
+            <p class="text-sm text-gray-600 mt-2" data-ar="أسئلة تغطي: العمليات على الدوال، تركيب الدوال، المجالات والمدى، والتطبيقات الحياتية" data-en="Covers: Operations on Functions, Function Composition, Domains and Ranges, and Real-Life Applications">أسئلة تغطي: العمليات على الدوال، تركيب الدوال، المجالات والمدى، والتطبيقات الحياتية</p>
             <p class="text-xs text-orange-600 mt-2 font-semibold" data-ar="⚠️ ملاحظة: يتم خلط ترتيب الأسئلة والخيارات تلقائياً مع كل تحديث للصفحة" data-en="⚠️ Note: Questions and options are randomly shuffled on every page refresh">⚠️ ملاحظة: يتم خلط ترتيب الأسئلة والخيارات تلقائياً مع كل تحديث للصفحة</p>
         </div>
         <div class="mt-4 flex flex-wrap justify-center gap-4 text-sm text-gray-600">
@@ -81,7 +81,7 @@
             <span><span data-ar="👤 الاسم:" data-en="👤 Name:">👤 الاسم:</span> <input type="text" id="studentName" class="border-b border-gray-400 bg-transparent w-32 text-center" placeholder="Enter name"></span>
             <span><span data-ar="🏫 الشعبة:" data-en="🏫 Class:">🏫 الشعبة:</span> <input type="text" id="studentClass" class="border-b border-gray-400 bg-transparent w-28 text-center" placeholder="Class"></span>
             <span><span data-ar="⏱️ المدة: 60 دقيقة" data-en="⏱️ Duration: 60 min">⏱️ المدة: 60 دقيقة</span></span>
-            <span><span data-ar="📊 המجموع: 100 درجة" data-en="📊 Total: 100 pts">📊 المجموع: 100 درجة</span></span>
+            <span><span data-ar="📊 المجموع: 100 درجة" data-en="📊 Total: 100 pts">📊 المجموع: 100 درجة</span></span>
         </div>
     </header>
 
@@ -94,7 +94,7 @@
     <div id="results-panel" class="max-w-4xl mx-auto mt-8 bg-white p-8 rounded-2xl shadow-2xl border-t-4 border-emerald-500 hidden no-print">
         <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center" data-ar="📊 نتائج الامتحان" data-en="📊 Exam Results">📊 نتائج الامتحان</h2>
         <div class="grid md:grid-cols-3 gap-4 mb-6">
-            <div class="bg-blue-50 p-4 rounded-xl text-center"><p data-ar="اسم الطالب" data-en="Student Name">اسم الطالب</p><p id="res-name" class="font-bold text-xl text-teal-700">-</p></div>
+            <div class="bg-blue-50 p-4 rounded-xl text-center"><p data-ar="اسم الطالب" data-en="Student Name">اسم الطالب</p><p id="res-name" class="font-bold text-xl text-rose-700">-</p></div>
             <div class="bg-purple-50 p-4 rounded-xl text-center"><p data-ar="التاريخ" data-en="Date">التاريخ</p><p id="res-date" class="font-bold text-xl text-purple-700">-</p></div>
             <div class="bg-emerald-50 p-4 rounded-xl text-center"><p data-ar="المجموع" data-en="Score">المجموع</p><p id="res-total" class="font-bold text-3xl text-emerald-600">0 / 100</p></div>
         </div>
@@ -107,29 +107,29 @@
             <h3 class="font-bold text-lg mb-4 text-gray-800" data-ar="📈 تفصيل الأداء حسب القسم:" data-en="📈 Performance Breakdown:">📈 تفصيل الأداء حسب القسم:</h3>
             <div class="space-y-3">
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات" data-en="Part 1: Basic Concepts, Rules, and Definitions">الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات</span>
-                    <span id="sec1-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="العمليات على الدوال" data-en="Operations on Functions">العمليات على الدوال</span>
+                    <span id="sec1-score" class="font-bold text-rose-600">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة" data-en="Part 2: Calculations and Exact Numerical Solutions">الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة</span>
-                    <span id="sec2-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="تركيب الدوال" data-en="Function Composition">تركيب الدوال</span>
+                    <span id="sec2-score" class="font-bold text-rose-600">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل" data-en="Part 3: Advanced Skills, Applications, and Problems">الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل</span>
-                    <span id="sec3-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="المجالات والمدى" data-en="Domains and Ranges">المجالات والمدى</span>
+                    <span id="sec3-score" class="font-bold text-rose-600">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية" data-en="Part 4: Mathematical Modeling, Graphing, and Practical Problems">الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية</span>
-                    <span id="sec4-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="التطبيقات الحياتية" data-en="Real-Life Applications">التطبيقات الحياتية</span>
+                    <span id="sec4-score" class="font-bold text-rose-600">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي" data-en="Part 5: Higher-Order Thinking, Analysis, and Logical Connections">الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي</span>
-                    <span id="sec5-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="المسائل المتقدمة" data-en="Advanced Problems">المسائل المتقدمة</span>
+                    <span id="sec5-score" class="font-bold text-rose-600">0/4</span>
                 </div>
             </div>
         </div>
         <div class="text-center mb-6">
-            <button id="sendEmailBtn" onclick="sendResultsToEmail()" class="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white text-lg px-8 py-3 rounded-xl font-bold shadow-xl transition transform hover:scale-105 cursor-pointer" data-ar="📧 إرسال النتائج للمعلم" data-en="📧 Send Results to Teacher">📧 إرسال النتائج للمعلم</button>
+            <button id="sendEmailBtn" onclick="sendResultsToEmail()" class="bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white text-lg px-8 py-3 rounded-xl font-bold shadow-xl transition transform hover:scale-105 cursor-pointer" data-ar="📧 إرسال النتائج للمعلم" data-en="📧 Send Results to Teacher">📧 إرسال النتائج للمعلم</button>
             <p id="emailStatus" class="text-sm mt-2 text-center font-medium"></p>
         </div>
         <div class="flex gap-3 justify-center">
@@ -138,10 +138,11 @@
     </div>
 
     <footer class="max-w-4xl mx-auto mt-10 mb-8 text-center text-gray-500 text-sm no-print">
-        © <span data-ar="رياضيات الصف 12 عام | الدرس 1-6: العمليات على الدوال وتركيب الدوال" data-en="Grade 12 General Math | Lesson 1-6: Operations and Composition of Functions">رياضيات الصف 12 عام | الدرس 1-6: العمليات على الدوال وتركيب الدوال</span> | Platform 4U Education
+        © <span data-ar="Operations on Functions and Function Composition" data-en="Operations on Functions and Function Composition">Operations on Functions and Function Composition</span> | Mr. Mohammed Hesham
     </footer>
 
 <script>
+// ==================== EmailJS Settings ====================
 const PUBLIC_KEY = "Rb3Lq8tXaFmc5YHUH";
 const SERVICE_ID = "service_w15m64i";
 const TEMPLATE_ID = "template_5b0u2tq";
@@ -150,627 +151,254 @@ const TARGET_EMAIL = "mohammedhesham872@gmail.com";
 emailjs.init(PUBLIC_KEY);
 
 const originalExamData = {
-    "title_ar": "الدرس 1-6: العمليات على الدوال وتركيب الدوال",
-    "title_en": "Lesson 1-6: Operations and Composition of Functions",
-    "desc_ar": "اختبار شامل يغطي الجمع والطرح والضرب والقسمة للدوال، مجال الدوال المشتركة، وتركيب الدوال ومجالها.",
-    "sections": [
+    sections: [
         {
-            "title": {
-                "ar": "🔹 الجزء الأول: العمليات الحسابية الأربع على الدوال",
-                "en": "🔹 Part 1: العمليات الحسابية الأربع على الدوال"
-            },
-            "questions": [
+            id: 'sec1',
+            title: { ar: '🔹 الجزء الأول: العمليات على الدوال', en: '🔹 Part 1: Operations on Functions' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "ما المفهوم الأساسي المرتبط بـ العمليات الحسابية الأربع على الدوال؟",
-                        "en": "What is the basic concept associated with العمليات الحسابية الأربع على الدوال?"
-                    },
-                    "options": [
-                        {
-                            "ar": "العلاقة الرياضية الصحيحة والتمثيل الإحداثي الدقيق",
-                            "en": "The correct mathematical relation and accurate coordinate mapping"
-                        },
-                        {
-                            "ar": "حساب المعدلات الخطية للبيانات المستمرة فقط",
-                            "en": "Calculating linear rates for continuous data only"
-                        },
-                        {
-                            "ar": "تحليل القيم المطلقة واستبعاد الحلول التخيلية",
-                            "en": "Analyzing absolute values and excluding imaginary solutions"
-                        },
-                        {
-                            "ar": "دراسة سلوك طرفي الدالة عند اللانهاية دائماً",
-                            "en": "Studying the end behavior of a function at infinity always"
-                        }
+                    q: { ar: 'إذا كانت f(x) = x² + 4x و g(x) = √(x + 2)، فما قيمة (f + g)(x)؟', en: 'If f(x) = x² + 4x and g(x) = √(x + 2), what is (f + g)(x)?' },
+                    options: [
+                        { ar: 'x² + 4x + √(x + 2)', en: 'x² + 4x + √(x + 2)' },
+                        { ar: 'x² + 4x - √(x + 2)', en: 'x² + 4x - √(x + 2)' },
+                        { ar: 'x² + 4x + √(x - 2)', en: 'x² + 4x + √(x - 2)' },
+                        { ar: 'x² + 4x * √(x + 2)', en: 'x² + 4x * √(x + 2)' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "المفهوم الأساسي يرتكز دائماً على إدراك القوانين الأساسية للعلاقات والدوال.",
-                        "en": "The basic concept always relies on understanding the core laws of relations and functions."
-                    }
+                    correct: 0,
+                    answer: { ar: '(f + g)(x) = f(x) + g(x) = x² + 4x + √(x + 2)', en: '(f + g)(x) = f(x) + g(x) = x² + 4x + √(x + 2)' }
                 },
                 {
-                    "q": {
-                        "ar": "أي مما يلي يعبر بدقة عن إحدى القواعد الأساسية لـ العمليات الحسابية الأربع على الدوال؟",
-                        "en": "Which of the following accurately expresses a basic rule for العمليات الحسابية الأربع على الدوال?"
-                    },
-                    "options": [
-                        {
-                            "ar": "القاعدة الأساسية التي تضمن الحصول على مخرجات وحيدة لكل مدخل حقيقي",
-                            "en": "The basic rule that ensures obtaining a unique output for each real input"
-                        },
-                        {
-                            "ar": "القاعدة التي تنفي تماماً ارتباط المتغيرات ذات الأسس الفردية",
-                            "en": "The rule that completely negates mapping variables with odd exponents"
-                        },
-                        {
-                            "ar": "القاعدة التي تقيد المجال للأعداد النسبية فقط",
-                            "en": "The rule that restricts the domain to rational numbers only"
-                        },
-                        {
-                            "ar": "قاعدة المساواة الصفرية لجميع المقادير الجبرية",
-                            "en": "The zero-equality rule for all algebraic expressions"
-                        }
+                    q: { ar: 'إذا كانت f(x) = x² + 4x و h(x) = 3x - 5، فما قيمة (f - h)(x)؟', en: 'If f(x) = x² + 4x and h(x) = 3x - 5, what is (f - h)(x)?' },
+                    options: [
+                        { ar: 'x² + x + 5', en: 'x² + x + 5' },
+                        { ar: 'x² + 7x + 5', en: 'x² + 7x + 5' },
+                        { ar: 'x² + x - 5', en: 'x² + x - 5' },
+                        { ar: 'x² - x + 5', en: 'x² - x + 5' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تضمن القواعد الرياضية سلامة العلاقات وصحة المخرجات من مدخلاتها.",
-                        "en": "Mathematical rules ensure the soundness of relations and validity of outputs from inputs."
-                    }
+                    correct: 0,
+                    answer: { ar: '(f - h)(x) = f(x) - h(x) = x² + 4x - (3x - 5) = x² + x + 5', en: '(f - h)(x) = f(x) - h(x) = x² + 4x - (3x - 5) = x² + x + 5' }
                 },
                 {
-                    "q": {
-                        "ar": "لماذا تعد دراسة العمليات الحسابية الأربع على الدوال خطوة ضرورية لحل المشكلات المتقدمة؟",
-                        "en": "Why is studying العمليات الحسابية الأربع على الدوال a necessary step for solving advanced problems?"
-                    },
-                    "options": [
-                        {
-                            "ar": "لأنها تضع الأساس المتين لفهم النماذج المعقدة وبناء الحلول البرمجية لها",
-                            "en": "Because it establishes the solid foundation for understanding complex models and coding their solutions"
-                        },
-                        {
-                            "ar": "لأنها تلغي الحاجة لاستخدام الحاسبات البيانية نهائياً",
-                            "en": "Because it completely eliminates the need for graphing calculators"
-                        },
-                        {
-                            "ar": "لأنها تعطي حلولاً تقريبية سريعة دون الحاجة للبرهان الجبري",
-                            "en": "Because it gives quick approximate solutions without algebraic proofs"
-                        },
-                        {
-                            "ar": "لأنها تفترض دائماً تماثل جميع الدوال الرياضية حركياً",
-                            "en": "Because it always assumes kinematics symmetry of all mathematical functions"
-                        }
+                    q: { ar: 'إذا كانت f(x) = x² + 4x و h(x) = 3x - 5، فما قيمة (f · h)(x)؟', en: 'If f(x) = x² + 4x and h(x) = 3x - 5, what is (f · h)(x)?' },
+                    options: [
+                        { ar: '3x³ + 7x² - 20x', en: '3x³ + 7x² - 20x' },
+                        { ar: '3x³ - 5x² + 12x² - 20x', en: '3x³ - 5x² + 12x² - 20x' },
+                        { ar: '3x³ - 7x² + 20x', en: '3x³ - 7x² + 20x' },
+                        { ar: '3x³ + 5x² - 20x', en: '3x³ + 5x² - 20x' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الفهم المبدئي للقواعد يسهل فك وتبسيط المشاكل المركبة لاحقاً.",
-                        "en": "Initial understanding of rules facilitates unfolding and simplifying composite problems later."
-                    }
+                    correct: 0,
+                    answer: { ar: '(f · h)(x) = f(x) * h(x) = (x² + 4x)(3x - 5) = 3x³ + 7x² - 20x', en: '(f · h)(x) = f(x) * h(x) = (x² + 4x)(3x - 5) = 3x³ + 7x² - 20x' }
                 },
                 {
-                    "q": {
-                        "ar": "أي الرموز المصطلحية التالية ترتبط بـ العمليات الحسابية الأربع على الدوال بشكل مباشر؟",
-                        "en": "Which of the following terminology symbols is directly associated with العمليات الحسابية الأربع على الدوال?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الرموز المصطلحية المحددة لخصائص المجال والمدى والتقاربات",
-                            "en": "The specific terminology symbols defining domain, range, and asymptotes"
-                        },
-                        {
-                            "ar": "الرمز المعبر عن التغير اللحظي المتجه فقط",
-                            "en": "The symbol representing instantaneous vector change only"
-                        },
-                        {
-                            "ar": "الرمز المحدد لأصفار المقادير كثيرة الحدود الفردية",
-                            "en": "The symbol specifying zeros of odd polynomial expressions"
-                        },
-                        {
-                            "ar": "الرموز المصطلحية لتكامل وحساب المساحات السطحية",
-                            "en": "The terminology symbols for integration and surface area calculations"
-                        }
+                    q: { ar: 'إذا كانت f(x) = x² + 4x و h(x) = 3x - 5، فما مجال الدالة (h/f)(x)؟', en: 'If f(x) = x² + 4x and h(x) = 3x - 5, what is the domain of (h/f)(x)?' },
+                    options: [
+                        { ar: '(-∞, -4) ∪ (-4, 0) ∪ (0, ∞)', en: '(-∞, -4) ∪ (-4, 0) ∪ (0, ∞)' },
+                        { ar: '(-∞, 0) ∪ (0, ∞)', en: '(-∞, 0) ∪ (0, ∞)' },
+                        { ar: '(-∞, -4) ∪ (-4, ∞)', en: '(-∞, -4) ∪ (-4, ∞)' },
+                        { ar: '(-∞, ∞)', en: '(-∞, ∞)' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تستخدم الرموز الرياضية لتكثيف التعبير عن العلاقات المعقدة بوضوح.",
-                        "en": "Mathematical symbols are used to concisely express complex relations clearly."
-                    }
+                    correct: 0,
+                    answer: { ar: 'مجال (h/f)(x) هو جميع الأعداد الحقيقية ماعدا حيث f(x) = 0، أي x = -4 و x = 0. لذا المجال هو (-∞, -4) ∪ (-4, 0) ∪ (0, ∞).', en: 'The domain of (h/f)(x) is all real numbers except where f(x) = 0, i.e., x = -4 and x = 0. So the domain is (-∞, -4) ∪ (-4, 0) ∪ (0, ∞).' }
                 }
             ]
         },
         {
-            "title": {
-                "ar": "🔹 الجزء الثاني: إيجاد مجال الدوال الناتجة عن العمليات الحسابية",
-                "en": "🔹 Part 2: إيجاد مجال الدوال الناتجة عن العمليات الحسابية"
-            },
-            "questions": [
+            id: 'sec2',
+            title: { ar: '🔹 الجزء الثاني: تركيب الدوال', en: '🔹 Part 2: Function Composition' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "أوجد القيمة العددية الدقيقة للتعبير المرتبط بـ إيجاد مجال الدوال الناتجة عن العمليات الحسابية عند التعويض بالقيم المرجعية؟",
-                        "en": "Find the exact numerical value of the expression associated with إيجاد مجال الدوال الناتجة عن العمليات الحسابية upon reference substitution?"
-                    },
-                    "options": [
-                        {
-                            "ar": "القيمة العددية الدقيقة المحسوبة باتباع الترتيب الجبري الصارم للعمليات الحسابية",
-                            "en": "The exact numerical value calculated by following the strict algebraic order of operations"
-                        },
-                        {
-                            "ar": "قيمة تقريبية تقرب لأقرب جزء من عشرة آلاف",
-                            "en": "An approximate value rounded to the nearest ten-thousandth"
-                        },
-                        {
-                            "ar": "صفر دائم بسبب انعدام المقادير الفردية في المعادلة",
-                            "en": "Zero always due to the vanishing of odd expressions in the equation"
-                        },
-                        {
-                            "ar": "قيمة تخيلية تشتمل على المركب التخيلي المباشر i",
-                            "en": "An imaginary value comprising the direct imaginary unit i"
-                        }
+                    q: { ar: 'إذا كانت f(x) = x² + 1 و g(x) = x - 4، فما قيمة [f ∘ g](x)؟', en: 'If f(x) = x² + 1 and g(x) = x - 4, what is [f ∘ g](x)?' },
+                    options: [
+                        { ar: 'x² - 8x + 17', en: 'x² - 8x + 17' },
+                        { ar: 'x² - 8x + 16', en: 'x² - 8x + 16' },
+                        { ar: 'x² - 4x + 1', en: 'x² - 4x + 1' },
+                        { ar: 'x² + 8x + 17', en: 'x² + 8x + 17' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "التعويض الدقيق يعطي القيمة العددية الصحيحة الخالية من التقريب العشوائي.",
-                        "en": "Exact substitution gives the correct numerical value free from random approximation."
-                    }
+                    correct: 0,
+                    answer: { ar: '[f ∘ g](x) = f(g(x)) = f(x - 4) = (x - 4)² + 1 = x² - 8x + 17', en: '[f ∘ g](x) = f(g(x)) = f(x - 4) = (x - 4)² + 1 = x² - 8x + 17' }
                 },
                 {
-                    "q": {
-                        "ar": "ما هي النتيجة الصحيحة لتبسيط المقدار الرياضي الممثل لـ إيجاد مجال الدوال الناتجة عن العمليات الحسابية؟",
-                        "en": "What is the correct result of simplifying the mathematical expression representing إيجاد مجال الدوال الناتجة عن العمليات الحسابية?"
-                    },
-                    "options": [
-                        {
-                            "ar": "المقدار المبسط كلياً الذي يختزل جميع الحدود المتشابهة في صياغة واحدة",
-                            "en": "The fully simplified expression that reduces all like terms into a single formulation"
-                        },
-                        {
-                            "ar": "مقدار من الدرجة الثامنة يشتمل على معاملات غير صحيحة",
-                            "en": "An eighth-degree expression containing non-integer coefficients"
-                        },
-                        {
-                            "ar": "تعبير لا خطي يؤول دائماً لمالانهاية الموجبة والسالبة",
-                            "en": "A non-linear expression always leading to positive and negative infinity"
-                        },
-                        {
-                            "ar": "مقدار صفري ينعدم تماماً عند جميع النقاط الحقيقية",
-                            "en": "A zero expression that vanishes completely at all real points"
-                        }
+                    q: { ar: 'إذا كانت f(x) = x² + 1 و g(x) = x - 4، فما قيمة [g ∘ f](x)؟', en: 'If f(x) = x² + 1 and g(x) = x - 4, what is [g ∘ f](x)?' },
+                    options: [
+                        { ar: 'x² - 3', en: 'x² - 3' },
+                        { ar: 'x² + 3', en: 'x² + 3' },
+                        { ar: 'x² - 4', en: 'x² - 4' },
+                        { ar: 'x² + 1', en: 'x² + 1' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تبسيط المقادير يسهل تحليل خصائصها ورسم منحنياتها بيانيا.",
-                        "en": "Simplifying expressions makes it easier to analyze their properties and graph them."
-                    }
+                    correct: 0,
+                    answer: { ar: '[g ∘ f](x) = g(f(x)) = g(x² + 1) = (x² + 1) - 4 = x² - 3', en: '[g ∘ f](x) = g(f(x)) = g(x² + 1) = (x² + 1) - 4 = x² - 3' }
                 },
                 {
-                    "q": {
-                        "ar": "إذا قمنا بالتعويض في دالة إيجاد مجال الدوال الناتجة عن العمليات الحسابية بالمتغير المستقل المضاف، فما هو التعبير الناتج؟",
-                        "en": "If we substitute into the function of إيجاد مجال الدوال الناتجة عن العمليات الحسابية with the shifted independent variable, what is the resulting expression?"
-                    },
-                    "options": [
-                        {
-                            "ar": "التعبير الجبري المزاح الذي يعكس التحويل المطلوب بدقة متناهية",
-                            "en": "The shifted algebraic expression that reflects the required transformation with absolute accuracy"
-                        },
-                        {
-                            "ar": "نفس التعبير الأصلي دون أي تغيير في المعاملات أو الأسس",
-                            "en": "The same original expression without any change in coefficients or exponents"
-                        },
-                        {
-                            "ar": "تعبير خطي بسيط يخلو من المتغير المستقل الأصلي",
-                            "en": "A simple linear expression devoid of the original independent variable"
-                        },
-                        {
-                            "ar": "مقدار غير معرف بسبب وقوع الصفر في مقام الكسر",
-                            "en": "An undefined expression due to zero occurring in the fraction's denominator"
-                        }
+                    q: { ar: 'إذا كانت f(x) = x² + 1 و g(x) = x - 4، فما قيمة [f ∘ g](2)؟', en: 'If f(x) = x² + 1 and g(x) = x - 4, what is [f ∘ g](2)?' },
+                    options: [
+                        { ar: '5', en: '5' },
+                        { ar: '17', en: '17' },
+                        { ar: '1', en: '1' },
+                        { ar: '9', en: '9' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "التعويض بالمتغير المزاح يعيد تشكيل الدالة لتعكس التحويل الهندسي الحاصل.",
-                        "en": "Substituting with a shifted variable reshapes the function to reflect the geometric transformation."
-                    }
+                    correct: 0,
+                    answer: { ar: '[f ∘ g](2) = f(g(2)) = f(2 - 4) = f(-2) = (-2)² + 1 = 5', en: '[f ∘ g](2) = f(g(2)) = f(2 - 4) = f(-2) = (-2)² + 1 = 5' }
                 },
                 {
-                    "q": {
-                        "ar": "ما هي أصفار المعادلة أو نقاط الحل المرتبطة بـ إيجاد مجال الدوال الناتجة عن العمليات الحسابية؟",
-                        "en": "What are the equation zeros or solution points associated with إيجاد مجال الدوال الناتجة عن العمليات الحسابية?"
-                    },
-                    "options": [
-                        {
-                            "ar": "القيم العددية الدقيقة التي تحقق المعادلة وتجعل الدالة مساوية للصفر تماماً",
-                            "en": "The exact numerical values that satisfy the equation and make the function strictly equal to zero"
-                        },
-                        {
-                            "ar": "القيم السالبة فقط التي تقع ضمن فترات الاختبار غير الحقيقية",
-                            "en": "The negative values only that fall within non-real test intervals"
-                        },
-                        {
-                            "ar": "النقاط التي تتقاطع عندها الدالة مع خطوط التقارب المائلة",
-                            "en": "The points where the function intersects the oblique asymptotes"
-                        },
-                        {
-                            "ar": "أعداد حقيقية تزيد بمقدار الثابت التأسيسي للمحور الصادي",
-                            "en": "Real numbers shifted by the starting constant of the y-axis"
-                        }
+                    q: { ar: 'إذا كانت f(x) = 1/(x + 1) و g(x) = x² - 9، فما مجال الدالة f ∘ g؟', en: 'If f(x) = 1/(x + 1) and g(x) = x² - 9, what is the domain of f ∘ g?' },
+                    options: [
+                        { ar: 'x ≠ ±2√2', en: 'x ≠ ±2√2' },
+                        { ar: 'x ≠ ±3', en: 'x ≠ ±3' },
+                        { ar: 'x ≠ ±√8', en: 'x ≠ ±√8' },
+                        { ar: 'x ≠ 0', en: 'x ≠ 0' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "أصفار الدالة هي الحلول الجبرية الدقيقة الناتجة عن تصفير المعادلة.",
-                        "en": "The zeros of a function are the exact algebraic solutions resulting from setting the equation to zero."
-                    }
+                    correct: 0,
+                    answer: { ar: 'مجال f ∘ g هو جميع الأعداد الحقيقية حيث g(x) ≠ -1، أي x² - 9 ≠ -1 → x² ≠ 8 → x ≠ ±2√2.', en: 'The domain of f ∘ g is all real numbers where g(x) ≠ -1, i.e., x² - 9 ≠ -1 → x² ≠ 8 → x ≠ ±2√2.' }
                 }
             ]
         },
         {
-            "title": {
-                "ar": "🔹 الجزء الثالث: تركيب دالتين (Composition) وحساب قيمها العددية",
-                "en": "🔹 Part 3: تركيب دالتين (Composition) وحساب قيمها العددية"
-            },
-            "questions": [
+            id: 'sec3',
+            title: { ar: '🔹 الجزء الثالث: المجالات والمدى', en: '🔹 Part 3: Domains and Ranges' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "ما هي المهارة الحسابية المتقدمة التي يجب تطبيقها لحل مشكلات تركيب دالتين (Composition) وحساب قيمها العددية؟",
-                        "en": "What advanced calculation skill must be applied to solve problems of تركيب دالتين (Composition) وحساب قيمها العددية?"
-                    },
-                    "options": [
-                        {
-                            "ar": "التحليل الجبري الشامل وتحديد الشروط والقيود المفروضة على المتغيرات بدقة",
-                            "en": "Comprehensive algebraic analysis and strictly defining the conditions and constraints on variables"
-                        },
-                        {
-                            "ar": "استبدال جميع الثوابت بقيم عشوائية لتجربتها بالاختيار المتعدد",
-                            "en": "Replacing all constants with random values to test them via multiple choice"
-                        },
-                        {
-                            "ar": "استخدام الآلة الحاسبة دون الحاجة لفهم الخطوات التفصيلية للحل",
-                            "en": "Using the calculator without needing to understand the detailed solution steps"
-                        },
-                        {
-                            "ar": "الاعتماد على التقريب الهندسي السريع للمنحنيات اللانهائية",
-                            "en": "Relying on quick geometric approximation of infinite curves"
-                        }
+                    q: { ar: 'إذا كانت f(x) = √(x + 1) و g(x) = x² - 1، فما مجال الدالة f ∘ g؟', en: 'If f(x) = √(x + 1) and g(x) = x² - 1, what is the domain of f ∘ g?' },
+                    options: [
+                        { ar: 'x ≤ -√2 أو x ≥ √2', en: 'x ≤ -√2 or x ≥ √2' },
+                        { ar: 'x ≤ -1 أو x ≥ 1', en: 'x ≤ -1 or x ≥ 1' },
+                        { ar: '-1 ≤ x ≤ 1', en: '-1 ≤ x ≤ 1' },
+                        { ar: 'جميع الأعداد الحقيقية', en: 'All real numbers' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "المهارات المتقدمة تشتمل على التحليل الرياضي المنطقي وتتبع الخطوات بدقة.",
-                        "en": "Advanced skills comprise logical mathematical analysis and tracking steps carefully."
-                    }
+                    correct: 0,
+                    answer: { ar: 'مجال f ∘ g هو جميع x حيث g(x) ≥ -1، أي x² - 1 ≥ -1 → x² ≥ 0، وهو صحيح لجميع الأعداد الحقيقية. لكن f(x) = √(x + 1) يتطلب x + 1 ≥ 0 → x ≥ -1. لذا مجال f ∘ g هو x ≤ -√2 أو x ≥ √2.', en: 'The domain of f ∘ g is all x where g(x) ≥ -1, i.e., x² - 1 ≥ -1 → x² ≥ 0, which is true for all real numbers. But f(x) = √(x + 1) requires x + 1 ≥ 0 → x ≥ -1. So the domain of f ∘ g is x ≤ -√2 or x ≥ √2.' }
                 },
                 {
-                    "q": {
-                        "ar": "كيف نتحقق من صحة الحل الجبري لـ تركيب دالتين (Composition) وحساب قيمها العددية؟",
-                        "en": "How do we verify the validity of the algebraic solution for تركيب دالتين (Composition) وحساب قيمها العددية?"
-                    },
-                    "options": [
-                        {
-                            "ar": "بالتعويض بالحلول في المعادلة الأصلية والتأكد من تحقيقها للتساوي أو الشرط",
-                            "en": "By substituting the solutions into the original equation and ensuring they satisfy the equality or condition"
-                        },
-                        {
-                            "ar": "بمقارنتها بالرسوم التوضيحية التقريبية لدروس أخرى مختلفة",
-                            "en": "By comparing them with approximate illustrations of other different lessons"
-                        },
-                        {
-                            "ar": "بافتراض أن جميع الحلول الناتجة صحيحة دون الحاجة لأي تحقق إضافي",
-                            "en": "By assuming all resulting solutions are correct without any additional verification"
-                        },
-                        {
-                            "ar": "عن طريق تحويل جميع القيم الحقيقية إلى أعداد مركبة تخيلية دائمأ",
-                            "en": "By transforming all real values into complex imaginary numbers always"
-                        }
+                    q: { ar: 'إذا كانت f(x) = x² - 2 و g(x) = √(x - 3)، فما مجال الدالة f ∘ g؟', en: 'If f(x) = x² - 2 and g(x) = √(x - 3), what is the domain of f ∘ g?' },
+                    options: [
+                        { ar: 'x ≥ 3', en: 'x ≥ 3' },
+                        { ar: 'x ≥ 2', en: 'x ≥ 2' },
+                        { ar: 'x ≥ 0', en: 'x ≥ 0' },
+                        { ar: 'جميع الأعداد الحقيقية', en: 'All real numbers' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "التحقق من الحلول يضمن استبعاد الحلول الدخيلة والتأكد من دقة العمل الجبري.",
-                        "en": "Verifying solutions ensures excluding extraneous solutions and validating the algebraic work."
-                    }
+                    correct: 0,
+                    answer: { ar: 'مجال f ∘ g هو جميع x حيث g(x) معرف، أي x - 3 ≥ 0 → x ≥ 3.', en: 'The domain of f ∘ g is all x where g(x) is defined, i.e., x - 3 ≥ 0 → x ≥ 3.' }
                 },
                 {
-                    "q": {
-                        "ar": "ما هي الأخطاء الشائعة التي يجب تجنبها عند دراسة تركيب دالتين (Composition) وحساب قيمها العددية؟",
-                        "en": "What are the common errors to avoid when studying تركيب دالتين (Composition) وحساب قيمها العددية?"
-                    },
-                    "options": [
-                        {
-                            "ar": "إغفال قيود المجال وشروط المعرفات مثل تجنب الصفر في المقام أو المقادير السالبة تحت الجذر الزوجي",
-                            "en": "Overlooking domain constraints and defined conditions like avoiding zero in denominator or negative values under even roots"
-                        },
-                        {
-                            "ar": "كتابة الرموز الرياضية بخط اليد بدلاً من طباعتها بالحاسوب",
-                            "en": "Writing mathematical symbols by hand instead of typing them on a computer"
-                        },
-                        {
-                            "ar": "استخدام ورق الرسم البياني غير المسطر بدقة",
-                            "en": "Using graph paper that is not ruled with absolute precision"
-                        },
-                        {
-                            "ar": "اعتبار جميع الدوال الأسية دوال لوغاريتمية طبيعية دائماً",
-                            "en": "Considering all exponential functions as natural logarithmic functions always"
-                        }
+                    q: { ar: 'إذا كانت f(x) = 5/x و g(x) = x² + x، فما مجال الدالة f ∘ g؟', en: 'If f(x) = 5/x and g(x) = x² + x, what is the domain of f ∘ g?' },
+                    options: [
+                        { ar: 'x ≠ 0 و x ≠ -1', en: 'x ≠ 0 and x ≠ -1' },
+                        { ar: 'x ≠ 0', en: 'x ≠ 0' },
+                        { ar: 'x ≠ -1', en: 'x ≠ -1' },
+                        { ar: 'جميع الأعداد الحقيقية', en: 'All real numbers' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تجنب الأخطاء الشائعة يحمي الطالب من ارتكاب هفوات حسابية تضيع صحة النواتج.",
-                        "en": "Avoiding common errors protects students from making computational slips that compromise results."
-                    }
+                    correct: 0,
+                    answer: { ar: 'مجال f ∘ g هو جميع x حيث g(x) ≠ 0، أي x² + x ≠ 0 → x(x + 1) ≠ 0 → x ≠ 0 و x ≠ -1.', en: 'The domain of f ∘ g is all x where g(x) ≠ 0, i.e., x² + x ≠ 0 → x(x + 1) ≠ 0 → x ≠ 0 and x ≠ -1.' }
                 },
                 {
-                    "q": {
-                        "ar": "أي من الحالات التالية تعبر عن تطبيق متقدم لـ تركيب دالتين (Composition) وحساب قيمها العددية؟",
-                        "en": "Which of the following cases expresses an advanced application of تركيب دالتين (Composition) وحساب قيمها العددية?"
-                    },
-                    "options": [
-                        {
-                            "ar": "تحليل الأنظمة الديناميكية وحساب فترات الثبات ومعدلات التغير للمتغيرات المعقدة",
-                            "en": "Analyzing dynamic systems and calculating stability intervals and rates of change for complex variables"
-                        },
-                        {
-                            "ar": "رسم أشكال هندسية بسيطة كالمستطيلات والمربعات يدوياً",
-                            "en": "Drawing simple geometric shapes like rectangles and squares by hand"
-                        },
-                        {
-                            "ar": "حساب العمليات الحسابية الأساسية للجمع والطرح الحسابي البسيط",
-                            "en": "Calculating basic arithmetic operations for simple addition and subtraction"
-                        },
-                        {
-                            "ar": "استبدال نظام الأرقام العشري بنظام العد الثنائي الإلكتروني",
-                            "en": "Substituting the decimal number system with the binary electronic system"
-                        }
+                    q: { ar: 'إذا كانت f(x) = √(x + 5) و g(x) = x² + 4x - 1، فما مجال الدالة f ∘ g؟', en: 'If f(x) = √(x + 5) and g(x) = x² + 4x - 1, what is the domain of f ∘ g?' },
+                    options: [
+                        { ar: 'x ≤ -2 - √6 أو x ≥ -2 + √6', en: 'x ≤ -2 - √6 or x ≥ -2 + √6' },
+                        { ar: 'x ≤ -5 أو x ≥ 5', en: 'x ≤ -5 or x ≥ 5' },
+                        { ar: 'x ≤ -1 أو x ≥ 1', en: 'x ≤ -1 or x ≥ 1' },
+                        { ar: 'جميع الأعداد الحقيقية', en: 'All real numbers' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تطبيقات الدوال كثيرة ومتشعبة في مجالات العلوم والهندسة والنمذجة الرياضية.",
-                        "en": "Function applications are numerous and diverse in science, engineering, and mathematical modeling."
-                    }
+                    correct: 0,
+                    answer: { ar: 'مجال f ∘ g هو جميع x حيث g(x) ≥ -5، أي x² + 4x - 1 ≥ -5 → x² + 4x + 4 ≥ 0 → (x + 2)² ≥ 0، وهو صحيح لجميع الأعداد الحقيقية. لكن f(x) = √(x + 5) يتطلب x + 5 ≥ 0 → x ≥ -5. لذا مجال f ∘ g هو x ≤ -2 - √6 أو x ≥ -2 + √6.', en: 'The domain of f ∘ g is all x where g(x) ≥ -5, i.e., x² + 4x - 1 ≥ -5 → x² + 4x + 4 ≥ 0 → (x + 2)² ≥ 0, which is true for all real numbers. But f(x) = √(x + 5) requires x + 5 ≥ 0 → x ≥ -5. So the domain of f ∘ g is x ≤ -2 - √6 or x ≥ -2 + √6.' }
                 }
             ]
         },
         {
-            "title": {
-                "ar": "🔹 الجزء الرابع: إيجاد تعبير الدالة المركبة وتحديد مجالها",
-                "en": "🔹 Part 4: إيجاد تعبير الدالة المركبة وتحديد مجالها"
-            },
-            "questions": [
+            id: 'sec4',
+            title: { ar: '🔹 الجزء الرابع: التطبيقات الحياتية', en: '🔹 Part 4: Real-Life Applications' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "كيف تستخدم إيجاد تعبير الدالة المركبة وتحديد مجالها في حل المسائل التطبيقية والعملية؟",
-                        "en": "How is إيجاد تعبير الدالة المركبة وتحديد مجالها used in solving applied and practical problems?"
-                    },
-                    "options": [
-                        {
-                            "ar": "بتحويل النص اللفظي للمشكلة إلى معادلة رياضية دقيقة وحلها وفقاً للأساليب الجبرية المعتمدة",
-                            "en": "By translating the verbal problem into an accurate mathematical equation and solving it using approved algebraic methods"
-                        },
-                        {
-                            "ar": "برسم مخططات تقريبية ملونة دون الالتزام بالقيم والبيانات الواردة في السؤال",
-                            "en": "By drawing colorful approximate charts without adhering to the values and data in the question"
-                        },
-                        {
-                            "ar": "بافتراض أن الحل دائماً يؤول للرقم عشرة أو الصفر لسهولة التدوين",
-                            "en": "By assuming the solution always leads to ten or zero for easy recording"
-                        },
-                        {
-                            "ar": "بالاعتماد على التجربة العملية المتكررة داخل المختبرات فقط",
-                            "en": "By relying on repeated physical experimentation in laboratories only"
-                        }
+                    q: { ar: 'في مثال موقع التواصل الاجتماعي، إذا كان A(t) = 60.4 مليون زائر و B(t) = 24.9 مليون زائر، فما قيمة A(t) - B(t)؟', en: 'In the social media example, if A(t) = 60.4 million visitors and B(t) = 24.9 million visitors, what is A(t) - B(t)?' },
+                    options: [
+                        { ar: '35.5 مليون زائر', en: '35.5 million visitors' },
+                        { ar: '85.3 مليون زائر', en: '85.3 million visitors' },
+                        { ar: '35.5 مليون زائر أقل', en: '35.5 million visitors less' },
+                        { ar: '60.4 مليون زائر', en: '60.4 million visitors' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "النمذجة الرياضية هي عملية تحويل الظواهر الحياتية إلى نماذج رياضية يمكن حلها وتحليلها.",
-                        "en": "Mathematical modeling is the process of converting real-world phenomena into mathematical models that can be solved and analyzed."
-                    }
+                    correct: 0,
+                    answer: { ar: 'A(t) - B(t) = 60.4 مليون - 24.9 مليون = 35.5 مليون زائر.', en: 'A(t) - B(t) = 60.4 million - 24.9 million = 35.5 million visitors.' }
                 },
                 {
-                    "q": {
-                        "ar": "ما الأهمية العملية لدراسة إيجاد تعبير الدالة المركبة وتحديد مجالها في التخطيط واتخاذ القرارات؟",
-                        "en": "What is the practical importance of studying إيجاد تعبير الدالة المركبة وتحديد مجالها in planning and decision making?"
-                    },
-                    "options": [
-                        {
-                            "ar": "التنبؤ الدقيق بالقيم المستقبلية وتحديد الحدود القصوى والدنيا للمتغيرات المؤثرة كالأرباح والتكاليف",
-                            "en": "Accurately forecasting future values and determining maximum and minimum limits for influential variables like profits and costs"
-                        },
-                        {
-                            "ar": "الاستغناء الكامل عن الكوادر البشرية في مجالات الإحصاء الرياضي",
-                            "en": "Complete elimination of human personnel in mathematical statistics fields"
-                        },
-                        {
-                            "ar": "إثبات أن جميع المشاكل الحياتية يمكن تمثيلها بخطوط مستقيمة بسيطة دائماً",
-                            "en": "Proving that all real-life problems can always be represented by simple straight lines"
-                        },
-                        {
-                            "ar": "تقليص الفترات الزمنية اللازمة لتصنيع المنتجات بشكل يدوي",
-                            "en": "Reducing time intervals required for manufacturing products manually"
-                        }
+                    q: { ar: 'في مثال أخصائي الرسوم المتحركة، إذا كان L(t) = 20 + 15t، فما مساحة المستطيل A(L)؟', en: 'In the animation example, if L(t) = 20 + 15t, what is the area of the rectangle A(L)?' },
+                    options: [
+                        { ar: 'A(L) = (20 + 15t)² + 40(20 + 15t)', en: 'A(L) = (20 + 15t)² + 40(20 + 15t)' },
+                        { ar: 'A(L) = (20 + 15t) * 40', en: 'A(L) = (20 + 15t) * 40' },
+                        { ar: 'A(L) = 20 + 15t + 40', en: 'A(L) = 20 + 15t + 40' },
+                        { ar: 'A(L) = 20 * 15t', en: 'A(L) = 20 * 15t' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تساعد دراسة النماذج الرياضية في بناء خطط استراتيجية مستندة إلى تقديرات وتنبؤات علمية دقيقة.",
-                        "en": "Studying mathematical models helps build strategic plans based on highly accurate scientific estimates and forecasts."
-                    }
+                    correct: 0,
+                    answer: { ar: 'A(L) = L * (L + 40) = (20 + 15t) * (20 + 15t + 40) = (20 + 15t)² + 40(20 + 15t).', en: 'A(L) = L * (L + 40) = (20 + 15t) * (20 + 15t + 40) = (20 + 15t)² + 40(20 + 15t).' }
                 },
                 {
-                    "q": {
-                        "ar": "كيف يمثل سلوك إيجاد تعبير الدالة المركبة وتحديد مجالها بيانياً لتسهيل فهم وتفسير النتائج؟",
-                        "en": "How is the behavior of إيجاد تعبير الدالة المركبة وتحديد مجالها graphed to facilitate understanding and interpreting results?"
-                    },
-                    "options": [
-                        {
-                            "ar": "برسم منحنيات ناعمة ومستمرة تعكس خصائص الدالة وتظهر نقاط التقاطع والتماثل والتقارب بوضوح",
-                            "en": "By drawing smooth, continuous curves reflecting function properties, clearly showing intersections, symmetry, and asymptotes"
-                        },
-                        {
-                            "ar": "برسم مضلعات حادة الزوايا غير مستمرة على الإطلاق",
-                            "en": "By drawing sharp-angled polygons that are not continuous at all"
-                        },
-                        {
-                            "ar": "بتلوين المساحات المحصورة أسفل المنحنى بألوان زاهية مختلفة",
-                            "en": "By coloring the areas bounded below the curve with different bright colors"
-                        },
-                        {
-                            "ar": "بمحاكاة ثلاثية الأبعاد تعتمد على برمجيات التصميم المعماري الصرف",
-                            "en": "By 3D simulations relying purely on architectural design software"
-                        }
+                    q: { ar: 'في مثال متجر بيع أجهزة الحاسوب، إذا كان هناك خصم 15% وقسيمة AED 100، فما الدالة التي تمثل السعر النهائي؟', en: 'In the computer store example, if there is a 15% discount and a AED 100 coupon, what is the function that represents the final price?' },
+                    options: [
+                        { ar: 'd(c(x)) = 0.85c(x) - 100', en: 'd(c(x)) = 0.85c(x) - 100' },
+                        { ar: 'd(c(x)) = c(x) - 0.15c(x) - 100', en: 'd(c(x)) = c(x) - 0.15c(x) - 100' },
+                        { ar: 'd(c(x)) = c(x) - 100', en: 'd(c(x)) = c(x) - 100' },
+                        { ar: 'd(c(x)) = 0.85c(x)', en: 'd(c(x)) = 0.85c(x)' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "التمثيل البياني يجسد سلوك الدوال المعقدة بطريقة بصرية سهلة القراءة والتحليل.",
-                        "en": "Graphing embodies the behavior of complex functions in a visual, easy-to-read, and analyze format."
-                    }
+                    correct: 0,
+                    answer: { ar: 'الدالة التي تمثل السعر النهائي هي d(c(x)) = 0.85c(x) - 100، حيث c(x) هو السعر الأصلي.', en: 'The function that represents the final price is d(c(x)) = 0.85c(x) - 100, where c(x) is the original price.' }
                 },
                 {
-                    "q": {
-                        "ar": "أي مما يلي يمثل سيناريو عملي واقعي لتطبيق إيجاد تعبير الدالة المركبة وتحديد مجالها؟",
-                        "en": "Which of the following represents a realistic practical scenario for applying إيجاد تعبير الدالة المركبة وتحديد مجالها?"
-                    },
-                    "options": [
-                        {
-                            "ar": "حساب تغير درجات حرارة الغلاف الجوي أو حساب التكاثر البكتيري ونمو السكان والشركات عبر الزمن",
-                            "en": "Calculating atmospheric temperature variations or bacterial growth, population growth, and company expansion over time"
-                        },
-                        {
-                            "ar": "ترتيب الكتب في المكتبات المدرسية بناء على الحجم والوزن",
-                            "en": "Arranging books in school libraries based on size and weight"
-                        },
-                        {
-                            "ar": "تصنيف الحيوانات الأليفة في حدائق الحيوان بناء على فصائلها الحيوية",
-                            "en": "Classifying domestic animals in zoos based on their biological families"
-                        },
-                        {
-                            "ar": "حساب السرعة القصوى للقطارات البخارية القديمة في القرن التاسع عشر",
-                            "en": "Calculating the top speed of old steam trains in the nineteenth century"
-                        }
+                    q: { ar: 'في مثال الطائرة، إذا كانت d(h) = √(h² + 0.25) و h(t) = 275t، فما الدالة d ∘ h؟', en: 'In the airplane example, if d(h) = √(h² + 0.25) and h(t) = 275t, what is the function d ∘ h?' },
+                    options: [
+                        { ar: 'd ∘ h = √((275t)² + 0.25)', en: 'd ∘ h = √((275t)² + 0.25)' },
+                        { ar: 'd ∘ h = √(h² + 0.25)', en: 'd ∘ h = √(h² + 0.25)' },
+                        { ar: 'd ∘ h = 275t + 0.25', en: 'd ∘ h = 275t + 0.25' },
+                        { ar: 'd ∘ h = √(275t + 0.25)', en: 'd ∘ h = √(275t + 0.25)' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تدخل هذه النماذج في دراسة وحل مشكلات النمو والتكاثر ونسب التغير في الطبيعة والصناعة.",
-                        "en": "These models are involved in studying and solving problems of growth, decay, and rates of change in nature and industry."
-                    }
+                    correct: 0,
+                    answer: { ar: 'd ∘ h = d(h(t)) = d(275t) = √((275t)² + 0.25).', en: 'd ∘ h = d(h(t)) = d(275t) = √((275t)² + 0.25).' }
                 }
             ]
         },
         {
-            "title": {
-                "ar": "🔹 الجزء الخامس: تفكيك الدوال المركبة إلى دوال أبسط",
-                "en": "🔹 Part 5: تفكيك الدوال المركبة إلى دوال أبسط"
-            },
-            "questions": [
+            id: 'sec5',
+            title: { ar: '🔹 الجزء الخامس: المسائل المتقدمة', en: '🔹 Part 5: Advanced Problems' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "ما هو التحدي الرياضي والتحليل المنطقي المرتبط بـ تفكيك الدوال المركبة إلى دوال أبسط؟",
-                        "en": "What is the mathematical challenge and logical analysis associated with تفكيك الدوال المركبة إلى دوال أبسط?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الربط العميق بين الأساليب الجبرية والتطبيقات البيانية وإثبات صحة النظريات والحلول علمياً",
-                            "en": "Deeply connecting algebraic methods with graphical applications and scientifically proving theories and solutions"
-                        },
-                        {
-                            "ar": "حفظ جميع الصيغ الرياضية غيباً دون الحاجة لفهم كيفية استنتاجها أو تطبيقها",
-                            "en": "Memorizing all mathematical formulas by heart without needing to understand how they are derived or applied"
-                        },
-                        {
-                            "ar": "إثبات أن جميع العمليات الحسابية يمكن اختزالها بالجمع الرياضي البسيط",
-                            "en": "Proving that all mathematical operations can be reduced to simple addition"
-                        },
-                        {
-                            "ar": "تجاهل الشروط الخاصة بتماثل المنحنيات لتبسيط الحلول",
-                            "en": "Ignoring curve symmetry conditions to simplify solutions"
-                        }
+                    q: { ar: 'إذا كانت h(x) = √(x³ - 4)، فما الدالتين f و g بحيث h(x) = [f ∘ g](x)؟', en: 'If h(x) = √(x³ - 4), what are the functions f and g such that h(x) = [f ∘ g](x)?' },
+                    options: [
+                        { ar: 'f(x) = √x و g(x) = x³ - 4', en: 'f(x) = √x and g(x) = x³ - 4' },
+                        { ar: 'f(x) = x³ - 4 و g(x) = √x', en: 'f(x) = x³ - 4 and g(x) = √x' },
+                        { ar: 'f(x) = x³ و g(x) = √(x - 4)', en: 'f(x) = x³ and g(x) = √(x - 4)' },
+                        { ar: 'f(x) = √(x - 4) و g(x) = x³', en: 'f(x) = √(x - 4) and g(x) = x³' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "مهارات التفكير العليا تطلب الربط الواعي والفهم الشامل ومناقشة الحلول وبراهينها.",
-                        "en": "Higher-order thinking skills require conscious linking, comprehensive understanding, and discussing solutions and their proofs."
-                    }
+                    correct: 0,
+                    answer: { ar: 'h(x) = √(x³ - 4) = √(g(x)) = f(g(x))، حيث f(x) = √x و g(x) = x³ - 4.', en: 'h(x) = √(x³ - 4) = √(g(x)) = f(g(x)), where f(x) = √x and g(x) = x³ - 4.' }
                 },
                 {
-                    "q": {
-                        "ar": "كيف نبرهن بشكل منطقي صحة الحلول المقترحة لمشكلات تفكيك الدوال المركبة إلى دوال أبسط؟",
-                        "en": "How do we logically prove the validity of proposed solutions for تفكيك الدوال المركبة إلى دوال أبسط problems?"
-                    },
-                    "options": [
-                        {
-                            "ar": "باستخدام قوانين المنطق الرياضي والبراهين الجبرية المتعاقبة التي لا تقبل الشك",
-                            "en": "Using the laws of mathematical logic and sequential algebraic proofs that leave no room for doubt"
-                        },
-                        {
-                            "ar": "بأخذ رأي أغلبية الطلاب في الصف كمرجع لصحة الإجابة",
-                            "en": "By taking the opinion of the majority of classmates as a reference for the correct answer"
-                        },
-                        {
-                            "ar": "بمقارنتها بالحلول التقريبية للمقادير الهندسية في مجالات الفضاء",
-                            "en": "By comparing them with approximate solutions of geometric figures in space fields"
-                        },
-                        {
-                            "ar": "بافتراض أن جميع النماذج تتوافق تلقائياً مع الفرضيات الرياضية البسيطة",
-                            "en": "By assuming that all models automatically conform to simple mathematical hypotheses"
-                        }
+                    q: { ar: 'إذا كانت h(x) = 2x² + 20x + 50، فما الدالتين f و g بحيث h(x) = [f ∘ g](x)؟', en: 'If h(x) = 2x² + 20x + 50, what are the functions f and g such that h(x) = [f ∘ g](x)?' },
+                    options: [
+                        { ar: 'f(x) = 2x² و g(x) = x + 5', en: 'f(x) = 2x² and g(x) = x + 5' },
+                        { ar: 'f(x) = 2(x + 5)² و g(x) = x', en: 'f(x) = 2(x + 5)² and g(x) = x' },
+                        { ar: 'f(x) = 2x² + 20x + 50 و g(x) = x', en: 'f(x) = 2x² + 20x + 50 and g(x) = x' },
+                        { ar: 'f(x) = 2x + 20 و g(x) = x² + 50', en: 'f(x) = 2x + 20 and g(x) = x² + 50' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "البرهان الرياضي يقوم على التسلسل المنطقي والقوانين المثبتة سابقاً بعيداً عن العشوائية.",
-                        "en": "Mathematical proof is based on logical sequencing and previously proven laws, far from randomness."
-                    }
+                    correct: 0,
+                    answer: { ar: 'h(x) = 2x² + 20x + 50 = 2(x² + 10x + 25) = 2(x + 5)² = f(g(x))، حيث f(x) = 2x² و g(x) = x + 5.', en: 'h(x) = 2x² + 20x + 50 = 2(x² + 10x + 25) = 2(x + 5)² = f(g(x)), where f(x) = 2x² and g(x) = x + 5.' }
                 },
                 {
-                    "q": {
-                        "ar": "ما الذي يستنتجه الطالب المتميز بعد دراسته العميقة لـ تفكيك الدوال المركبة إلى دوال أبسط؟",
-                        "en": "What does an outstanding student conclude after a deep study of تفكيك الدوال المركبة إلى دوال أبسط?"
-                    },
-                    "options": [
-                        {
-                            "ar": "أن الرياضيات لغة متكاملة تصف الطبيعة بدقة وتوفر أدوات تحليل وحل لأعقد الظواهر المحيطة بنا",
-                            "en": "That mathematics is an integrated language describing nature accurately and providing tools to analyze and solve the most complex phenomena around us"
-                        },
-                        {
-                            "ar": "أن جميع المسائل الرياضية تم حلها سابقاً ولا حاجة للمزيد من الابتكار أو التطوير",
-                            "en": "That all mathematical problems have been solved previously and there is no need for further innovation or development"
-                        },
-                        {
-                            "ar": "أن النماذج الخطية كافية وحدها لتمثيل كل المتغيرات في الكون دون حاجة للنماذج اللاخطية",
-                            "en": "That linear models alone are sufficient to represent all variables in the universe without needing non-linear models"
-                        },
-                        {
-                            "ar": "أن دراسة الدوال تقتصر فائدتها على اجتياز الاختبارات المدرسية المحددة فقط",
-                            "en": "That studying functions is useful only for passing specific school examinations"
-                        }
+                    q: { ar: 'إذا كانت h(x) = (√(x - 7) + 4)²، فما الدالتين f و g و k بحيث h(x) = [f ∘ g ∘ k](x)؟', en: 'If h(x) = (√(x - 7) + 4)², what are the functions f, g, and k such that h(x) = [f ∘ g ∘ k](x)?' },
+                    options: [
+                        { ar: 'f(x) = x², g(x) = x + 4, k(x) = √(x - 7)', en: 'f(x) = x², g(x) = x + 4, k(x) = √(x - 7)' },
+                        { ar: 'f(x) = (x + 4)², g(x) = √x, k(x) = x - 7', en: 'f(x) = (x + 4)², g(x) = √x, k(x) = x - 7' },
+                        { ar: 'f(x) = x², g(x) = √(x + 4), k(x) = x - 7', en: 'f(x) = x², g(x) = √(x + 4), k(x) = x - 7' },
+                        { ar: 'f(x) = x + 4, g(x) = √x, k(x) = x² - 7', en: 'f(x) = x + 4, g(x) = √x, k(x) = x² - 7' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الرياضيات هي أداة التفكير العلمي المنظم ولغة التطوير والابتكار التكنولوجي المستمر.",
-                        "en": "Mathematics is the tool of organized scientific thinking and the language of continuous technological development and innovation."
-                    }
+                    correct: 0,
+                    answer: { ar: 'h(x) = (√(x - 7) + 4)² = f(g(k(x)))، حيث f(x) = x², g(x) = x + 4, k(x) = √(x - 7).', en: 'h(x) = (√(x - 7) + 4)² = f(g(k(x))), where f(x) = x², g(x) = x + 4, k(x) = √(x - 7).' }
                 },
                 {
-                    "q": {
-                        "ar": "كيف يسهم التفكير الإبداعي في تطوير وتطبيق نماذج تفكيك الدوال المركبة إلى دوال أبسط؟",
-                        "en": "How does creative thinking contribute to developing and applying models of تفكيك الدوال المركبة إلى دوال أبسط?"
-                    },
-                    "options": [
-                        {
-                            "ar": "بابتكار طرق حل جديدة واختصار الخطوات الطويلة ودمج المعارف والربط بين حقول العلوم المختلفة",
-                            "en": "By innovating new solution methods, shortcutting long steps, merging knowledge, and linking different fields of science"
-                        },
-                        {
-                            "ar": "بتصميم واجهات ملونة وغير منظمة لتبديد رتابة الرسوم البيانية القديمة",
-                            "en": "By designing colorful, unorganized interfaces to break the monotony of old graphs"
-                        },
-                        {
-                            "ar": "بالتخلي عن القوانين الجبرية الصارمة واعتماد الحدس الرياضي المباشر فقط",
-                            "en": "By abandoning strict algebraic laws and relying solely on direct mathematical intuition"
-                        },
-                        {
-                            "ar": "باستبدال الأرقام بالرموز التعبيرية التفاعلية الممتعة",
-                            "en": "By replacing numbers with fun, interactive expressive emojis"
-                        }
+                    q: { ar: 'إذا كانت h(x) = √((x - 5)² + 8)، فما الدالتين f و g بحيث h(x) = [f ∘ g](x)؟', en: 'If h(x) = √((x - 5)² + 8), what are the functions f and g such that h(x) = [f ∘ g](x)?' },
+                    options: [
+                        { ar: 'f(x) = √x و g(x) = (x - 5)² + 8', en: 'f(x) = √x and g(x) = (x - 5)² + 8' },
+                        { ar: 'f(x) = (x - 5)² + 8 و g(x) = √x', en: 'f(x) = (x - 5)² + 8 and g(x) = √x' },
+                        { ar: 'f(x) = √(x + 8) و g(x) = (x - 5)²', en: 'f(x) = √(x + 8) and g(x) = (x - 5)²' },
+                        { ar: 'f(x) = √(x² + 8) و g(x) = x - 5', en: 'f(x) = √(x² + 8) and g(x) = x - 5' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "يسهم الإبداع في كسر الجمود الرياضي وتسهيل المعرفة وجعلها أكثر متعة وفائدة للبشرية.",
-                        "en": "Creativity contributes to breaking mathematical rigidity, facilitating knowledge, and making it more enjoyable and useful for humanity."
-                    }
+                    correct: 0,
+                    answer: { ar: 'h(x) = √((x - 5)² + 8) = √(g(x)) = f(g(x))، حيث f(x) = √x و g(x) = (x - 5)² + 8.', en: 'h(x) = √((x - 5)² + 8) = √(g(x)) = f(g(x)), where f(x) = √x and g(x) = (x - 5)² + 8.' }
                 }
             ]
         }
@@ -816,6 +444,8 @@ function prepareShuffledExam() {
             globalIdx++;
         });
     });
+    
+    console.log('✅ تم خلط الأسئلة والخيارات بنجاح');
 }
 
 function reshuffleExam() {
@@ -852,8 +482,8 @@ function setLanguage(lang) {
 function renderExam() {
     const container = document.getElementById('exam-content');
     const labels = {
-        ar: { option: ['أ', 'ب', 'ج', 'د'], answer: '✅ الإجابة الصحيحة:' },
-        en: { option: ['A', 'B', 'C', 'D'], answer: '✅ Correct Answer:' }
+        ar: { option: ['أ', 'ب', 'ج', 'د'], answer: '✅ الإجابة:' },
+        en: { option: ['A', 'B', 'C', 'D'], answer: '✅ Answer:' }
     };
     const lbl = labels[currentLang];
     const isRTL = currentLang === 'ar';
@@ -864,13 +494,13 @@ function renderExam() {
     examData.sections.forEach((section) => {
         html += `
         <section class="bg-white p-6 rounded-xl shadow-lg">
-            <h2 class="text-xl font-bold mb-4 text-teal-700">${section.title[currentLang]}</h2>
+            <h2 class="text-xl font-bold mb-4 text-rose-700">${section.title[currentLang]}</h2>
             <ol class="space-y-4 text-sm">`;
             
         section.questions.forEach((q) => {
             const borderSide = isRTL ? 'border-r-4 pr-4' : 'border-l-4 pl-4';
             html += `
-                <li class="${borderSide} border-teal-500 py-2" id="q-${globalIdx}">
+                <li class="${borderSide} border-rose-500 py-2" id="q-${globalIdx}">
                     <strong>${globalIdx + 1}.</strong> ${q.q[currentLang]}<br>`;
                     
             q.options.forEach((opt, oIdx) => {
@@ -935,17 +565,15 @@ function gradeExam() {
                 correctCount++;
                 li.classList.add('correct');
                 li.classList.remove('incorrect');
-            } else {
-                li.classList.add('incorrect');
-                li.classList.remove('correct');
-            }
-
-            if (isCorrect) {
+                
                 if (i < 4) sec1++;
                 else if (i < 8) sec2++;
                 else if (i < 12) sec3++;
                 else if (i < 16) sec4++;
                 else sec5++;
+            } else {
+                li.classList.add('incorrect');
+                li.classList.remove('correct');
             }
         }
     }
@@ -953,7 +581,7 @@ function gradeExam() {
     const score = (correctCount / 20) * 100;
     const successRate = Math.round(score);
     
-    document.getElementById('res-total').textContent = `${successRate} / 100`;
+    document.getElementById('res-total').textContent = `${Math.round(score)} / 100`;
     document.getElementById('res-name').textContent = document.getElementById('studentName').value || (currentLang === 'ar' ? 'طالب' : 'Student');
     document.getElementById('res-date').textContent = new Date().toLocaleDateString(currentLang === 'ar' ? 'ar-AE' : 'en-US');
     
@@ -998,85 +626,74 @@ function sendResultsToEmail() {
     const badge = document.getElementById('success-badge').textContent;
 
     const sectionNames = {
-        ar: [
-            "الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات",
-            "الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة",
-            "الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل",
-            "الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية",
-            "الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي"
-        ],
-        en: [
-            "Part 1: Basic Concepts, Rules, and Definitions",
-            "Part 2: Calculations and Exact Numerical Solutions",
-            "Part 3: Advanced Skills, Applications, and Problems",
-            "Part 4: Mathematical Modeling, Graphing, and Practical Problems",
-            "Part 5: Higher-Order Thinking, Analysis, and Logical Connections"
-        ]
+        ar: ['العمليات على الدوال', 'تركيب الدوال', 'المجالات والمدى', 'التطبيقات الحياتية', 'المسائل المتقدمة'],
+        en: ['Operations on Functions', 'Function Composition', 'Domains and Ranges', 'Real-Life Applications', 'Advanced Problems']
     };
     const currentSectionNames = sectionNames[currentLang];
 
     let answersHTML = `
-        <div style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; direction: \${currentLang === 'ar' ? 'rtl' : 'ltr'}; text-align: \${currentLang === 'ar' ? 'right' : 'left'};">
-            <div style="background: linear-gradient(135deg, #0d9488, #0891b2); color: white; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;">
-                <h2 style="margin: 0; font-size: 22px;">⚡ \${currentLang === 'ar' ? 'نتيجة امتحان الرياضيات والتحليل التفاعلي' : 'Math Interactive Exam Result'}</h2>
-                <p style="margin: 5px 0 0 0; opacity: 0.9;">\${currentLang === 'ar' ? 'رياضيات الصف الثاني عشر عام | الفصل الدراسي الأول' : 'Grade 12 General Math | Term 1'}</p>
-                <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.8;">🔀 \${currentLang === 'ar' ? 'تم خلط الأسئلة تلقائياً' : 'Questions were randomly shuffled'}</p>
+        <div style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; direction: ${currentLang === 'ar' ? 'rtl' : 'ltr'};">
+            <div style="background: linear-gradient(135deg, #e11d48, #db2777); color: white; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;">
+                <h2 style="margin: 0; font-size: 22px;">🧮 ${currentLang === 'ar' ? 'نتيجة امتحان العمليات على الدوال وتركيب الدوال' : 'Operations on Functions and Function Composition Exam Result'}</h2>
+                <p style="margin: 5px 0 0 0; opacity: 0.9;">${currentLang === 'ar' ? 'Operations on Functions and Function Composition' : 'Operations on Functions and Function Composition'}</p>
+                <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.8;">🔀 ${currentLang === 'ar' ? 'تم خلط الأسئلة تلقائياً' : 'Questions were randomly shuffled'}</p>
             </div>
             
-            <div style="background: #f0fdfa; padding: 15px; border: 1px solid #99f6e4;">
+            <div style="background: #fff1f2; padding: 15px; border: 1px solid #fecdd3;">
                 <table style="width: 100%; border-collapse: collapse;">
                     <tr>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">\${currentLang === 'ar' ? '👤 الاسم:' : '👤 Name:'}</td>
-                        <td style="padding: 8px;">\${name}</td>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">\${currentLang === 'ar' ? '🏫 الشعبة:' : '🏫 Class:'}</td>
-                        <td style="padding: 8px;">\${studentClass}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #be123c;">${currentLang === 'ar' ? '👤 الاسم:' : '👤 Name:'}</td>
+                        <td style="padding: 8px;">${name}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #be123c;">${currentLang === 'ar' ? '🏫 الشعبة:' : '🏫 Class:'}</td>
+                        <td style="padding: 8px;">${studentClass}</td>
                     </tr>
                     <tr>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">\${currentLang === 'ar' ? '📅 التاريخ:' : '📅 Date:'}</td>
-                        <td style="padding: 8px;">\${date}</td>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">\${currentLang === 'ar' ? '🏆 التقدير:' : '🏆 Grade:'}</td>
-                        <td style="padding: 8px;">\${badge}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #be123c;">${currentLang === 'ar' ? '📅 التاريخ:' : '📅 Date:'}</td>
+                        <td style="padding: 8px;">${date}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #be123c;">${currentLang === 'ar' ? '🏆 التقدير:' : '🏆 Grade:'}</td>
+                        <td style="padding: 8px;">${badge}</td>
                     </tr>
                 </table>
             </div>
 
             <div style="background: white; padding: 20px; text-align: center; border-bottom: 2px solid #e5e7eb;">
                 <div style="display: inline-block; margin: 0 15px;">
-                    <div style="font-size: 32px; font-weight: bold; color: #0d9488;">\${score}</div>
-                    <div style="color: #6b7280; font-size: 13px;">\${currentLang === 'ar' ? 'الدرجة الكلية' : 'Total Score'}</div>
+                    <div style="font-size: 32px; font-weight: bold; color: #e11d48;">${score}</div>
+                    <div style="color: #6b7280; font-size: 13px;">${currentLang === 'ar' ? 'الدرجة الكلية' : 'Total Score'}</div>
                 </div>
                 <div style="display: inline-block; margin: 0 15px;">
-                    <div style="font-size: 32px; font-weight: bold; color: #059669;">\${successRate}%</div>
-                    <div style="color: #6b7280; font-size: 13px;">\${currentLang === 'ar' ? 'نسبة النجاح' : 'Success Rate'}</div>
+                    <div style="font-size: 32px; font-weight: bold; color: #059669;">${successRate}%</div>
+                    <div style="color: #6b7280; font-size: 13px;">${currentLang === 'ar' ? 'نسبة النجاح' : 'Success Rate'}</div>
                 </div>
             </div>
 
             <h3 style="background: #f3f4f6; padding: 12px; margin: 0; color: #1f2937; border-bottom: 2px solid #d1d5db;">
-                \${currentLang === 'ar' ? '📝 تفاصيل الإجابات' : '📝 Answer Details'}
+                📝 ${currentLang === 'ar' ? 'تفاصيل الإجابات' : 'Answer Details'}
             </h3>
             <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                 <thead>
-                    <tr style="background: #0d9488; color: white;">
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 8%;">#</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 32%;">\${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 15%;">\${currentLang === 'ar' ? 'الإجابة' : 'Answer'}</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 15%;">\${currentLang === 'ar' ? 'الصحيحة' : 'Correct'}</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 15%;">\${currentLang === 'ar' ? 'النتيجة' : 'Status'}</th>
+                    <tr style="background: #e11d48; color: white;">
+                        <th style="padding: 10px; border: 1px solid #be123c; width: 8%;">#</th>
+                        <th style="padding: 10px; border: 1px solid #be123c; width: 32%;">${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
+                        <th style="padding: 10px; border: 1px solid #be123c; width: 15%;">${currentLang === 'ar' ? 'الإجابة' : 'Answer'}</th>
+                        <th style="padding: 10px; border: 1px solid #be123c; width: 15%;">${currentLang === 'ar' ? 'الصحيحة' : 'Correct'}</th>
+                        <th style="padding: 10px; border: 1px solid #be123c; width: 15%;">${currentLang === 'ar' ? 'النتيجة' : 'Status'}</th>
                     </tr>
                 </thead>
                 <tbody>
     `;
 
-    let sectionScores = [sec1, sec2, sec3, sec4, sec5];
+    let sectionScores = [0, 0, 0, 0, 0];
     let sectionTotals = [4, 4, 4, 4, 4];
 
     for (let i = 0; i < 20; i++) {
-        const selected = document.querySelector(`input[name="q\${i}"]:checked`);
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
         const selectedValue = selected ? selected.value : '-';
         const correctValue = correctAnswersMap[i];
         const isCorrect = selectedValue === correctValue;
         
         const sectionIndex = Math.floor(i / 4);
+        if (isCorrect) sectionScores[sectionIndex]++;
 
         const rowBg = i % 2 === 0 ? '#f9fafb' : '#ffffff';
         const statusBg = isCorrect ? '#dcfce7' : '#fee2e2';
@@ -1087,13 +704,13 @@ function sendResultsToEmail() {
             : (currentLang === 'ar' ? 'خطأ' : 'Wrong');
 
         answersHTML += `
-            <tr style="background: \${rowBg};">
-                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold;">\${i + 1}</td>
-                <td style="padding: 8px; border: 1px solid #e5e7eb;">\${currentSectionNames[sectionIndex]}</td>
-                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold;">\${selectedValue.toUpperCase()}</td>
-                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #059669;">\${correctValue.toUpperCase()}</td>
-                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; background: \${statusBg}; color: \${statusColor}; font-weight: bold;">
-                    \${statusIcon} \${statusText}
+            <tr style="background: ${rowBg};">
+                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold;">${i + 1}</td>
+                <td style="padding: 8px; border: 1px solid #e5e7eb;">${currentSectionNames[sectionIndex]}</td>
+                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold;">${selectedValue.toUpperCase()}</td>
+                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #059669;">${correctValue.toUpperCase()}</td>
+                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; background: ${statusBg}; color: ${statusColor}; font-weight: bold;">
+                    ${statusIcon} ${statusText}
                 </td>
             </tr>
         `;
@@ -1103,15 +720,15 @@ function sendResultsToEmail() {
                 </tbody>
             </table>
 
-            <h3 style="background: #f3f4f6; padding: 12px; margin: 0; color: #1f2937; border-bottom: 2px solid #d1d5db; border-top: 3px solid #0d9488;">
-                📊 \${currentLang === 'ar' ? 'تفصيل الأداء' : 'Performance Breakdown'}
+            <h3 style="background: #f3f4f6; padding: 12px; margin: 0; color: #1f2937; border-bottom: 2px solid #d1d5db; border-top: 3px solid #e11d48;">
+                📊 ${currentLang === 'ar' ? 'تفصيل الأداء' : 'Performance Breakdown'}
             </h3>
             <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                 <thead>
-                    <tr style="background: #7c3aed; color: white;">
-                        <th style="padding: 10px; border: 1px solid #6d28d9;">\${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
-                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 20%;">\${currentLang === 'ar' ? 'النتيجة' : 'Score'}</th>
-                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 20%;">\${currentLang === 'ar' ? 'النسبة' : 'Percentage'}</th>
+                    <tr style="background: #db2777; color: white;">
+                        <th style="padding: 10px; border: 1px solid #be185d;">${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
+                        <th style="padding: 10px; border: 1px solid #be185d; width: 20%;">${currentLang === 'ar' ? 'النتيجة' : 'Score'}</th>
+                        <th style="padding: 10px; border: 1px solid #be185d; width: 20%;">${currentLang === 'ar' ? 'النسبة' : 'Percentage'}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1123,16 +740,16 @@ function sendResultsToEmail() {
         const rowBg = i % 2 === 0 ? '#f9fafb' : '#ffffff';
         
         answersHTML += `
-            <tr style="background: \${rowBg};">
-                <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: 600;">\${currentSectionNames[i]}</td>
-                <td style="padding: 10px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #0d9488;">
-                    \${sectionScores[i]} / \${sectionTotals[i]}
+            <tr style="background: ${rowBg};">
+                <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: 600;">${currentSectionNames[i]}</td>
+                <td style="padding: 10px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #e11d48;">
+                    ${sectionScores[i]} / ${sectionTotals[i]}
                 </td>
                 <td style="padding: 10px; border: 1px solid #e5e7eb;">
                     <div style="background: #e5e7eb; border-radius: 10px; overflow: hidden; height: 20px; position: relative;">
-                        <div style="background: \${barColor}; width: \${percentage}%; height: 100%;"></div>
-                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; font-weight: bold; color: #1f2937;">
-                            \${percentage}%
+                        <div style="background: ${barColor}; width: ${percentage}%; height: 100%;"></div>
+                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 11px; font-weight: bold; color: #1f2937;">
+                            ${percentage}%
                         </span>
                     </div>
                 </td>
@@ -1146,8 +763,8 @@ function sendResultsToEmail() {
 
             <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 0 0 10px 10px; border-top: 2px solid #f59e0b;">
                 <p style="margin: 0; color: #78350f; text-align: center; font-size: 13px;">
-                    💡 <strong>\${currentLang === 'ar' ? 'ملاحظة:' : 'Note:'}</strong> 
-                    \${currentLang === 'ar' 
+                    💡 <strong>${currentLang === 'ar' ? 'ملاحظة:' : 'Note:'}</strong> 
+                    ${currentLang === 'ar' 
                         ? 'تم إرسال هذا التقرير تلقائياً من منصة 4U التعليمية | Mr. Mohammed Hesham' 
                         : 'This report was automatically sent from 4U Educational Platform | Mr. Mohammed Hesham'}
                 </p>
